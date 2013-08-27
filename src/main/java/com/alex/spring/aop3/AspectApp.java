@@ -11,7 +11,7 @@ class SimpleAdvice implements MethodInterceptor{
 
 	@Override
 	public Object invoke(MethodInvocation invocation) throws Throwable {
-		System.out.println(">>>>Invocing " + invocation.getMethod().getName());
+		System.out.println(">>>>Invoking " + invocation.getMethod().getName());
 		Object obj = invocation.proceed();
 		System.out.println(">>>>Done");
 		return obj;
