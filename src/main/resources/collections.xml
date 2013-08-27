@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+	<util:list id="cities">
+
+		<bean class="com.alex.spring.beans.City" p:name="Lviv" p:state="Lvivska"
+			p:population="800000" />
+		<bean class="com.alex.spring.beans.City" p:name="Bila Tserkov"
+			p:state="Kiyvska" p:population="300000" />
+		<bean class="com.alex.spring.beans.City" p:name="Kiyv" p:state="Kiyvska"
+			p:population="2500000" />
+		<bean class="com.alex.spring.beans.City" p:name="Yavoriv"
+			p:state="Lvivska" p:population="15000" />
+		<bean class="com.alex.spring.beans.City" p:name="Vasylkov"
+			p:state="Kiyvska" p:population="25000" />
+	</util:list>
+
+	<bean name="output" class="com.alex.spring.beans.Outputing">
+		<property name="city" value="#{cities.$[population gt 30000]}" />
+		<property name="query" value="#{cities.?[population gt 30000]}" />
+		<property name="qwer" value="#{cities.?[population lt 30000].!['||' + name +', '+state + '||']}"/>
+		<property name="asdf">
+			<null />
+		</property>
+	</bean>
+</beans>

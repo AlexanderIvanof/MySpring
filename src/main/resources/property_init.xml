@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+	<!-- Initialization from properties without SpEL -->
+	<bean id="kiyv" class="com.alex.spring.beans.City">
+		<property name="name" value="${city.name}" />
+		<property name="population" value="${city.population}" />
+		<property name="state" value="${city.state}" />
+	</bean>
+
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations" value="city.properties" />
+	</bean>
+	<!-- Initialization from properties with SpEL -->
+	<util:properties id="lviv_init" location="classpath:city.properties" />
+
+	<bean id="lviv" class="com.alex.spring.beans.City">
+		<property name="name" value="#{lviv_init['lviv.name']}" />
+		<property name="population" value="#{lviv_init['lviv.population']}" />
+		<property name="state" value="#{lviv_init['lviv.state']}" />
+	</bean>
+
+
+</beans>
