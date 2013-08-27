@@ -10,8 +10,7 @@ public class SimpleBeforeAdvice implements MethodBeforeAdvice {
 	@Override
 	public void before(Method method, Object[] arg1, Object arg2)
 			throws Throwable {
-		System.out
-				.println("Before what method, we are usually use to advice? Before "
+		System.out.println("Before what method, we are usually use to advice? Before "
 						+ method.getName());
 	}
 
