@@ -20,6 +20,7 @@ public class MessageSourceDemo {
 		System.out.println(ctxt.getMessage("msg", null, russian));
 		
 		System.out.println(ctxt.getMessage("with.array.object", new Object[]{"Alex", "Ivanov"} , english));
+		System.out.println("Hello Git");
 
 	}
 
