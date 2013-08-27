@@ -1,0 +1,6 @@
+# Ignore all files in target/
+target/
+.classpath
+.project
+.springBeans
+.settings/
