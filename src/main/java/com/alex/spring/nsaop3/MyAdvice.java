@@ -8,4 +8,14 @@ public class MyAdvice {
 		System.out.println(">>>>" + point.getSignature().getDeclaringTypeName()
 				+ " ==> " + point.getSignature().getName());
 	}
+
+	public void otherBeforeAdvice(JoinPoint point, String value) {
+		if (!value.equals("NO")) {
+			System.out.println(">>>>"
+					+ point.getSignature().getDeclaringTypeName() + " ==> "
+					+ point.getSignature().getName());
+		} else {
+			System.out.println("Not \"NO\"");
+		}
+	}
 }

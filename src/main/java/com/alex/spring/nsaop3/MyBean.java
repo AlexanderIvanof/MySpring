@@ -6,7 +6,9 @@ public class MyBean {
 	
 	public void execute(){
 		dep.foo(100);
-		dep.bar();
+		dep.bar("Hi, man");
+		dep.foo();
+		dep.foo(123, "Hello");
 	}
 	
 	public void setDep(MyDependency dep){
