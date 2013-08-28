@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+
+	<bean id="advice" class="com.alex.spring.nsaop3.MyAdvice" />
+
+	<bean id="myDependency" class="com.alex.spring.nsaop3.MyDependency" />
+
+	<bean id="myBean" class="com.alex.spring.nsaop3.MyBean">
+		<property name="dep" ref="myDependency" />
+	</bean>
+
+	<aop:config>
+		<aop:pointcut expression="execution(* foo*(..))" id="forFoo"/>
+		
+		<aop:aspect ref="advice">
+			<aop:before method="simpleBeforeAdvice" pointcut-ref="forFoo"/>
+		</aop:aspect>
+		
+	</aop:config>
+
+</beans>
