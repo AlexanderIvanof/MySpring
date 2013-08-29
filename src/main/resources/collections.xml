@@ -5,6 +5,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
 
+<!-- Use collections -->
 	<util:list id="cities">
 
 		<bean class="com.alex.spring.beans.City" p:name="Lviv" p:state="Lvivska"
