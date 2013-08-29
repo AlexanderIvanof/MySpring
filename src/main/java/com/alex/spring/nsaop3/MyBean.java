@@ -4,9 +4,9 @@ public class MyBean {
 
 	private MyDependency dep;
 	
-	public void execute(){
+	public void execute(String name){
 		dep.foo(100);
-		dep.bar("Hi, man");
+		dep.bar(name);
 		dep.foo();
 		dep.foo(123, "Hello");
 	}

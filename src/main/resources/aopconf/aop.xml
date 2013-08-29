@@ -26,6 +26,11 @@
 			<aop:before method="otherBeforeAdvice" pointcut-ref="forBar"/>
 		</aop:aspect>
 		
+		<aop:aspect ref="advice">
+			<aop:after method="simpleAfter"
+			 pointcut="execution(* bar(..)) and args(str)"/>
+		</aop:aspect>
+		
 	</aop:config>
 
 </beans>

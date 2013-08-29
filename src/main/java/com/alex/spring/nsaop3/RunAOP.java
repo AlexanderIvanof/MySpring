@@ -11,7 +11,7 @@ public class RunAOP {
 		ctx.refresh();
 		
 		MyBean bean = (MyBean) ctx.getBean("myBean");
-		bean.execute();
+		bean.execute("Alex");
 	}
 
 }
