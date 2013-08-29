@@ -6,7 +6,6 @@ public class City {
 	private String state;
 	
 	public City() {
-		// TODO Auto-generated constructor stub
 	}
 
 	/**

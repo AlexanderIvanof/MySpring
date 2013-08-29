@@ -7,6 +7,7 @@
 	<context:annotation-config />
 
 	<bean id="instrument" class="com.alex.spring.beans.Saxophone" />
+	
 	<bean id="bill" class="com.alex.spring.beans.Instrumentalist"
 		autowire="byName">
 		<property name="song" value="Oh, my darling" />

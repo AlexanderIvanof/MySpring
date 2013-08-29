@@ -14,9 +14,16 @@
 
 	<aop:config>
 		<aop:pointcut expression="execution(* foo*(..))" id="forFoo"/>
+		<!-- It is show us, how we can use aspect with parameters and limit depends of bean -->
+		<aop:pointcut  id="forBar"
+		 expression="execution(* bar(java.lang.String)) and args(value) and bean(myDependency*)"/>
 		
 		<aop:aspect ref="advice">
 			<aop:before method="simpleBeforeAdvice" pointcut-ref="forFoo"/>
+		</aop:aspect>
+		
+		<aop:aspect ref="advice">
+			<aop:before method="otherBeforeAdvice" pointcut-ref="forBar"/>
 		</aop:aspect>
 		
 	</aop:config>

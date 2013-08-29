@@ -5,7 +5,6 @@ public class SayHello {
 	private String name;
 	
 	public SayHello() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	public String getName() {
