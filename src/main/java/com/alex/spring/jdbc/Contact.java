@@ -5,16 +5,16 @@ import java.sql.Date;
 import java.util.List;
 
 /**
- * POJO for spring_db.contact 
+ * POJO for spring_db.contact
  * 
  * @author Alexander Ivanov
- *
+ * 
  */
 public class Contact implements Serializable {
-	
+
 	/* Serial for contact */
 	private static final long serialVersionUID = -9175607211157005848L;
-	
+
 	private Long id;
 	private String firstName;
 	private String lastName;
@@ -24,14 +24,15 @@ public class Contact implements Serializable {
 	public Contact() {
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Contact [id=" + id + ", firstName=" + firstName
-				+ ", lastName=" + lastName + ", Birthday:" + birthDate
-				+ ", contactTelDetail=" + contactTelDetail + "]";
+		return "Contact [id=" + id + ", firstName=" + firstName + ", lastName="
+				+ lastName + ", Birthday:" + birthDate + "]";
 	}
 
 	/**
@@ -42,7 +43,8 @@ public class Contact implements Serializable {
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(Long id) {
 		this.id = id;
@@ -56,7 +58,8 @@ public class Contact implements Serializable {
 	}
 
 	/**
-	 * @param firstName the firstName to set
+	 * @param firstName
+	 *            the firstName to set
 	 */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
@@ -70,7 +73,8 @@ public class Contact implements Serializable {
 	}
 
 	/**
-	 * @param secondName the secondName to set
+	 * @param secondName
+	 *            the secondName to set
 	 */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
@@ -84,7 +88,8 @@ public class Contact implements Serializable {
 	}
 
 	/**
-	 * @param birthDate the birthDate to set
+	 * @param birthDate
+	 *            the birthDate to set
 	 */
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
@@ -98,11 +103,11 @@ public class Contact implements Serializable {
 	}
 
 	/**
-	 * @param contactTelDetail the contactTelDetail to set
+	 * @param contactTelDetail
+	 *            the contactTelDetail to set
 	 */
 	public void setContactTelDetail(List<ContactTelDetail> contactTelDetail) {
 		this.contactTelDetail = contactTelDetail;
 	}
-	
-	
+
 }

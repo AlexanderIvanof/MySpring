@@ -5,7 +5,9 @@ import java.util.List;
 import com.alex.spring.jdbc.Contact;
 import com.alex.spring.jdbc.dao.ContactDAO;
 import com.alex.spring.jdbc.dao.impl.PlainContactDAO;
-
+/*
+ * This class remember a jdbc sample
+ */
 public class RunJDBCApp {
 
 	static ContactDAO contDAO = new PlainContactDAO();
@@ -16,7 +18,10 @@ public class RunJDBCApp {
 		
 		List<Contact> all = contDAO.findAll();
 		
-		System.out.println(all);
+		for (Contact contact : all) {
+			System.out.println(contact);
+		}
+		
 	}
 
 }
