@@ -10,10 +10,11 @@
 	
 	<!-- We create common simple pool of connection to DB -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-		p:driverClassName="${com.mysql.jdbc.Driver}"
-		p:url="${com.mysql.url}"
-		p:username="${com.mysql.username}"
-		p:password="${com.mysql.password}" 
+		p:driverClassName="${jdbc.mysql.driver.class}"
+		p:url="${jdbc.mysql.url}"
+		p:username="${jdbc.mysql.username}"
+		p:password="${jdbc.mysql.password}"
+		p:initialSize="5" 
 		destroy-method="close"/>
 	
 	<bean id="contactDAO" class="com.alex.spring.jdbc.dao.impl.JdbcCondactDao" 

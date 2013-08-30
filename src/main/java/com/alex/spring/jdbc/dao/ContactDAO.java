@@ -8,7 +8,11 @@ public interface ContactDAO {
 
 	public List<Contact> findAll();
 	
+	public List<Contact> findAllWithDetail();
+	
 	public List<Contact> findByFirstName(String firstName);
+	
+	public String findFirstNameByID(Long id);
 	
 	public void insert(Contact contact);
 	

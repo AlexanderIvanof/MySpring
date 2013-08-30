@@ -125,4 +125,14 @@ public class PlainContactDAO implements ContactDAO {
 		} catch (SQLException e) {
 		}
 	}
+
+	@Override
+	public String findFirstNameByID(Long id) {
+		return null;
+	}
+
+	@Override
+	public List<Contact> findAllWithDetail() {
+		return null;
+	}
 }
