@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<context:property-placeholder location="classpath:jdbc/spring_db.properties" />
+	
+	<!-- We create common simple pool of connection to DB -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		p:driverClassName="${com.mysql.jdbc.Driver}"
+		p:url="${com.mysql.url}"
+		p:username="${com.mysql.username}"
+		p:password="${com.mysql.password}" 
+		destroy-method="close"/>
+	
+	<bean id="contactDAO" class="com.alex.spring.jdbc.dao.impl.JdbcCondactDao" 
+		p:dataSource-ref="dataSource" 
+		init-method="afterInitMethod"/>
+
+</beans>
