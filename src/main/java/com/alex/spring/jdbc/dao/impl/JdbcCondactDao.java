@@ -152,5 +152,11 @@ public class JdbcCondactDao implements ContactDAO {
 	public void delete(Long contactId) {
 	}
 
+	@Override
+	public void insertWithDetail(Contact contact) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

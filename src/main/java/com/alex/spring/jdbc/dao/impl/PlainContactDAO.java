@@ -135,4 +135,10 @@ public class PlainContactDAO implements ContactDAO {
 	public List<Contact> findAllWithDetail() {
 		return null;
 	}
+
+	@Override
+	public void insertWithDetail(Contact contact) {
+		// TODO Auto-generated method stub
+		
+	}
 }

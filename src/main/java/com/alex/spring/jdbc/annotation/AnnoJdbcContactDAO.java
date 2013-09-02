@@ -1,12 +1,16 @@
 package com.alex.spring.jdbc.annotation;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import com.alex.spring.jdbc.Contact;
@@ -21,6 +25,13 @@ public class AnnoJdbcContactDAO implements ContactDAO {
 	 * delegate to class which extends MappingSqlQuery<T> 
 	 */
 	private SelectAllContacts selectAll;
+	private SelectContactByFirstName selectByName;
+	
+	/*
+	 * delegate to class which extends SqlUpdate 
+	 */
+	private UpdateContact update;
+	private InsertContact insert;
 
 	public AnnoJdbcContactDAO() {
 	}
@@ -32,14 +43,17 @@ public class AnnoJdbcContactDAO implements ContactDAO {
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
 		selectAll = new SelectAllContacts(dataSource);
-		
+		selectByName = new SelectContactByFirstName(dataSource);
+		update = new UpdateContact(dataSource);
+		insert = new InsertContact(dataSource);
 	}
-		
-	/**
-	 * @return the dataSource
-	 */
-	public DataSource getDataSource() {
-		return dataSource;
+
+
+	@Override
+	public List<Contact> findByFirstName(String firstName) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("first_name", firstName);
+		return selectByName.executeByNamedParam(map);
 	}
 	
 	@Override
@@ -48,12 +62,46 @@ public class AnnoJdbcContactDAO implements ContactDAO {
 	}
 
 	@Override
-	public List<Contact> findAllWithDetail() {
-		return null;
+	public void update(Contact contact) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("first_name", contact.getFirstName());
+		map.put("last_name", contact.getLastName());
+		map.put("id", contact.getId());
+		map.put("birth_date", contact.getBirthDate());
+		update.updateByNamedParam(map);
+		log.info("Contact is update: " + contact);
+	}
+	
+	@Override
+	public void insert(Contact contact) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("first_name", contact.getFirstName());
+		map.put("last_name", contact.getLastName());;
+		map.put("birth_date", contact.getBirthDate());
+		KeyHolder keyHolder = new GeneratedKeyHolder();
+		insert.updateByNamedParam(map, keyHolder);
+		contact.setId(keyHolder.getKey().longValue());
+		log.info("Insert new user: " + contact);
+		
+	}
+	
+	@Override
+	public void insertWithDetail(Contact contact) {
+		// TODO Auto-generated method stub
+		
 	}
 
+	/**
+	 * @return the dataSource
+	 */
+	public DataSource getDataSource() {
+		return dataSource;
+	}
+	
+	
+
 	@Override
-	public List<Contact> findByFirstName(String firstName) {
+	public List<Contact> findAllWithDetail() {
 		return null;
 	}
 
@@ -63,18 +111,7 @@ public class AnnoJdbcContactDAO implements ContactDAO {
 	}
 
 	@Override
-	public void insert(Contact contact) {
-	}
-
-	@Override
-	public void update(Contact contact) {
-	}
-
-	@Override
 	public void delete(Long contactId) {
 	}
-
-
-
 	
 }
