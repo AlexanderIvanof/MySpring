@@ -41,6 +41,13 @@ public class RunJDBCSpringAnnotation {
 				}
 			}
 		}
+		
+		/*
+		 * call sql function method
+		 *
+		 */
+		System.out.println(contDAO.findFirstNameByID(3l));
+		
 		/* method call updating db */
 //		callUpdate(contDAO);
 		

@@ -33,6 +33,11 @@ public class AnnoJdbcContactDAO implements ContactDAO {
 	private UpdateContact update;
 	private InsertContact insert;
 
+	/*
+	 * delegate to class which extends SqlFunction<T>  
+	 */
+	private FirstNameById function;
+	
 	public AnnoJdbcContactDAO() {
 	}
 	
@@ -46,6 +51,7 @@ public class AnnoJdbcContactDAO implements ContactDAO {
 		selectByName = new SelectContactByFirstName(dataSource);
 		update = new UpdateContact(dataSource);
 		insert = new InsertContact(dataSource);
+		function = new FirstNameById(dataSource);
 	}
 
 
@@ -85,6 +91,13 @@ public class AnnoJdbcContactDAO implements ContactDAO {
 		
 	}
 	
+
+	@Override
+	public String findFirstNameByID(Long id) {
+		List<String> result = function.execute(id);
+		return result.get(0);
+	}
+	
 	@Override
 	public void insertWithDetail(Contact contact) {
 		// TODO Auto-generated method stub
@@ -102,11 +115,6 @@ public class AnnoJdbcContactDAO implements ContactDAO {
 
 	@Override
 	public List<Contact> findAllWithDetail() {
-		return null;
-	}
-
-	@Override
-	public String findFirstNameByID(Long id) {
 		return null;
 	}
 
