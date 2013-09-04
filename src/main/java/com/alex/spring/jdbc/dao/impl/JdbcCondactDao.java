@@ -154,8 +154,6 @@ public class JdbcCondactDao implements ContactDAO {
 
 	@Override
 	public void insertWithDetail(Contact contact) {
-		// TODO Auto-generated method stub
-		
 	}
 
 

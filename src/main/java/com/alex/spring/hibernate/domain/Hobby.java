@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+@Entity
 @Table
 public class Hobby implements Serializable {
 
