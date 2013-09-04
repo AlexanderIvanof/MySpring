@@ -44,6 +44,7 @@ public class RunHibernateApp {
 		
 	}
 	
+	@SuppressWarnings("unused")
 	private static void saveContact(ContactDAO contactDAO){
 		Contact contact = new Contact();
 		contact.setFirstName("Michel");
