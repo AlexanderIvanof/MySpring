@@ -29,8 +29,7 @@ public class ContactDAOImpl implements ContactDAO {
 	}
 
 	/**
-	 * @param sessionFactory
-	 *            the sessionFactory to set
+	 * @param sessionFactory the sessionFactory to set
 	 */
 	@Resource(name = "sessionFactory")
 	public void setSessionFactory(SessionFactory sessionFactory) {
