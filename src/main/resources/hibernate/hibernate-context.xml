@@ -31,7 +31,13 @@
 	<!-- Configure Hibernate bean -->
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="packagesToScan" value="com.alex.spring.hibernate.domain" />
+		<!-- package where to find the @Entity  -->
+		<property name="packagesToScan">
+			<list>
+				<!-- Here we can to write concrete class -->
+				<value>com.alex.spring.hibernate.domain</value>
+			</list>
+		</property>
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
